@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipe roBoiTuVa - Robótica IFSP Boituva</title>
+  <meta name="description" content="Homepage oficial futurista da equipe de robótica roBoiTuVa do IFSP Campus Boituva. Ensino, pesquisa e competição em robótica.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Grid cibernético e overlays de efeitos -->
+  <div class="overlay-grid"></div>
+  <div class="overlay-scanlines"></div>
+
+  <!-- Background interativo com Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <div class="app-container">
+
+    <!-- Cabeçalho HUD -->
+    <header class="hud-header">
+      <div class="hud-left">
+        <div class="hud-logo-icon">R</div>
+        <div>
+          <div style="font-weight: bold; color: var(--color-white);">ROBOITUVA // SISTEMA</div>
+          <div style="font-size: 0.65rem; color: var(--color-gray);">IFSP CAMPUS BOITUVA</div>
+        </div>
+      </div>
+      
+      <div class="hud-right">
+        <div class="hud-status-node">
+          <span class="status-dot"></span>
+          <span style="color: var(--color-red); font-size: 0.75rem;">REDE: ATIVA</span>
+        </div>
+        <div class="hud-system-time" id="system-time">00:00:00 UTC</div>
+        <nav class="social-hud-links">
+          <a href="https://www.instagram.com/equipe.roboituva/?igsh=ZWpzcnJ3dnVtNmdy#" target="_blank" class="social-hud-btn" aria-label="Instagram">INSTAGRAM</a>
+          <a href="https://roboituvaifsp.wixsite.com/roboituva" target="_blank" class="social-hud-btn" aria-label="Website Oficial">WEBSITE OFICIAL</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero-section" id="home">
+      <div class="hero-content">
+        <div class="hero-tag">Registro Principal // Rede Aberta</div>
+        <h1 class="hero-title" id="glitch-title">
+          <span>Somos a equipe</span>
+          <span class="glow-word">roBoiTuVa!</span>
+        </h1>
+        <p class="hero-desc">
+          Somos uma equipe dedicada ao <strong>ensino, pesquisa e competição de robótica</strong> no Instituto Federal de São Paulo, Campus Boituva. Nosso objetivo é disseminar conhecimento tecnológico e desenvolver projetos inovadores.
+        </p>
+        <div class="hero-btn-container">
+          <button class="cyber-btn" onclick="scrollToSection('tech-panel')">Núcleo do Sistema</button>
+          <button class="cyber-btn cyber-btn-secondary" onclick="scrollToSection('crew')">Dossiê</button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="core-container">
+          <div class="core-ring core-ring-1"></div>
+          <div class="core-ring core-ring-2"></div>
+          <div class="core-ring core-ring-3"></div>
+          <div class="core-logo-box">
+            <!-- Logo local atualizada -->
+            <img src="logo.png" alt="Logo Roboituva" class="core-logo-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção do Terminal Tecnológico -->
+    <section class="section-wrapper" id="tech-panel">
+      <div class="section-header">
+        <h2 class="section-title">Tecnologias & Hardware</h2>
+        <span class="section-subtitle-mono">SUBSISTEMA CARREGADO [05/05]</span>
+      </div>
+
+      <div class="terminal-grid">
+        <!-- Botões Interativos -->
+        <div class="tech-buttons-stack">
+          <button class="tech-btn active" data-tech="python">
+            <span class="tech-btn-label">
+              <span class="tech-btn-num">01</span>
+              <span>Integração Python</span>
+            </span>
+            <span class="tech-btn-arrow">&gt;</span>
+          </button>
+          <button class="tech-btn" data-tech="scratch">
+            <span class="tech-btn-label">
+              <span class="tech-btn-num">02</span>
+              <span>Scratch & Lógica</span>
+            </span>
+            <span class="tech-btn-arrow">&gt;</span>
+          </button>
+          <button class="tech-btn" data-tech="ia-robotica">
+            <span class="tech-btn-label">
+              <span class="tech-btn-num">03</span>
+              <span>I.A. & Robótica</span>
+            </span>
+            <span class="tech-btn-arrow">&gt;</span>
+          </button>
+          <button class="tech-btn" data-tech="lego-ev3">
+            <span class="tech-btn-label">
+              <span class="tech-btn-num">04</span>
+              <span>Lego EV3</span>
+            </span>
+            <span class="tech-btn-arrow">&gt;</span>
+          </button>
+          <button class="tech-btn" data-tech="eletronica">
+            <span class="tech-btn-label">
+              <span class="tech-btn-num">05</span>
+              <span>Eletrônica Aplicada</span>
+            </span>
+            <span class="tech-btn-arrow">&gt;</span>
+          </button>
+        </div>
+
+        <!-- Saída do Console -->
+        <div class="console-box">
+          <div class="console-bar">
+            <div class="console-dots">
+              <span class="console-dot red"></span>
+              <span class="console-dot"></span>
+              <span class="console-dot"></span>
+            </div>
+            <span>SAÍDA DO TERMINAL // ROBOITUVA-SHELL</span>
+            <span style="color: var(--color-red);" id="console-status">ONLINE</span>
+          </div>
+          <div class="console-body" id="console-output">
+            <!-- Populado via JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Diretrizes / Objetivos -->
+    <section class="section-wrapper" id="protocols">
+      <div class="section-header">
+        <h2 class="section-title">Diretrizes & Objetivos</h2>
+        <span class="section-subtitle-mono">PARÂMETROS DA MISSÃO</span>
+      </div>
+
+      <div class="protocols-grid">
+        <!-- Ensino -->
+        <div class="protocol-card">
+          <div class="protocol-num">PROTOCOLO_01</div>
+          <h3 class="protocol-title">Ensino</h3>
+          <p class="protocol-desc">Disseminação de conhecimento tecnológico através de workshops práticos, mentorias e cursos introdutórios de robótica dedicados a enriquecer a comunidade local e regional.</p>
+        </div>
+
+        <!-- Competição -->
+        <div class="protocol-card">
+          <div class="protocol-num">PROTOCOLO_02</div>
+          <h3 class="protocol-title">Competição</h3>
+          <p class="protocol-desc">Treinamento avançado e participação estratégica na OBR (Olimpíada Brasileira de Robótica) e em torneios de alto nível, representando o IFSP no ranking nacional.</p>
+        </div>
+
+        <!-- Colaboração -->
+        <div class="protocol-card">
+          <div class="protocol-num">PROTOCOLO_03</div>
+          <h3 class="protocol-title">Colaboração</h3>
+          <p class="protocol-desc">Desenvolvimento focado em Open Source, compartilhamento de códigos, modelagem 3D e fortalecimento do trabalho em equipe integrado e multidisciplinar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registro da Equipe (Membros) -->
+    <section class="section-wrapper" id="crew">
+      <div class="section-header">
+        <h2 class="section-title">Registro da Equipe (Membros)</h2>
+        <span class="section-subtitle-mono">LISTA DE INTEGRANTES // [09/09] NOMES</span>
+      </div>
+
+      <!-- Filtros -->
+      <div class="crew-filter-bar">
+        <button class="filter-btn active" data-filter="all">TODOS</button>
+        <button class="filter-btn" data-filter="orientadores">ORIENTADORES</button>
+        <button class="filter-btn" data-filter="desenvolvedores">DESENVOLVEDORES</button>
+        <button class="filter-btn" data-filter="suporte">TÉCNICOS</button>
+      </div>
+
+      <!-- Grid de Cartões da Equipe -->
+      <div class="crew-grid" id="crew-grid">
+        
+        <!-- Prof. Andressa -->
+        <div class="crew-card" data-category="orientadores">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">CIENTISTA CHEFE</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <circle cx="12" cy="7" r="1" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">Profª Dra. Andressa Macedo Rosa</h3>
+              <span class="crew-role">Docente / Orientadora</span>
+            </div>
+            <a href="http://lattes.cnpq.br/2399377471499288" target="_blank" class="crew-link-btn">
+              <span>VER CURRÍCULO LATTES</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Prof. Leandro -->
+        <div class="crew-card" data-category="orientadores">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">ORIENTADOR DE SISTEMAS</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <line x1="12" y1="3" x2="12" y2="5" stroke-width="2" stroke="var(--color-red)"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">Prof. Esp. Leandro Lopes de Camargo</h3>
+              <span class="crew-role">Docente / Orientador</span>
+            </div>
+            <a href="http://lattes.cnpq.br/9722748090532343" target="_blank" class="crew-link-btn">
+              <span>VER CURRÍCULO LATTES</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Prof. Marcelo -->
+        <div class="crew-card" data-category="orientadores">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">ORIENTADOR DE HARDWARE</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <circle cx="12" cy="7" r="2" stroke-dasharray="2"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">Prof. Dr. Marcelo Frate</h3>
+              <span class="crew-role">Docente / Orientador</span>
+            </div>
+            <a href="http://lattes.cnpq.br/8632724748282199" target="_blank" class="crew-link-btn">
+              <span>VER CURRÍCULO LATTES</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Prof. Percy -->
+        <div class="crew-card" data-category="orientadores">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">ORIENTADOR DE ROBÓTICA</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <path d="M10 7h4v2h-4z" fill="var(--color-red)"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">Prof. Dr. Percy Javier Kaneshiro</h3>
+              <span class="crew-role">Docente / Orientador</span>
+            </div>
+            <a href="http://lattes.cnpq.br/4244899331556252" target="_blank" class="crew-link-btn">
+              <span>VER CURRÍCULO LATTES</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Emerson Junior -->
+        <div class="crew-card" data-category="desenvolvedores">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">MONITOR // DEV</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <rect x="9" y="15" width="6" height="4" rx="1" fill="var(--color-red-glow)"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">Emerson Junior</h3>
+              <span class="crew-role">Monitor de Robótica & Programador</span>
+            </div>
+            <a href="https://www.linkedin.com/in/%C3%A9merson-j%C3%BAnior-a3b216214/" target="_blank" class="crew-link-btn">
+              <span>CONECTAR NO LINKEDIN</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Mateus de Melo -->
+        <div class="crew-card" data-category="desenvolvedores">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">PROGRAMADOR CORE</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <circle cx="12" cy="7" r="2" fill="var(--color-red)"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">Mateus de Melo</h3>
+              <span class="crew-role">Programador</span>
+            </div>
+            <a href="https://www.linkedin.com/in/mateusdemelo/" target="_blank" class="crew-link-btn">
+              <span>CONECTAR NO LINKEDIN</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Flavia Goes -->
+        <div class="crew-card" data-category="desenvolvedores">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">PESQUISADORA // DEV</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <path d="M12 2v2M12 20v2M4 12H2M22 12h-2" stroke="var(--color-red)"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">Flavia Goes</h3>
+              <span class="crew-role">Bolsista de Iniciação Científica & Programadora</span>
+            </div>
+            <a href="https://www.linkedin.com/in/flaviagoes/" target="_blank" class="crew-link-btn">
+              <span>CONECTAR NO LINKEDIN</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- David Barbosa -->
+        <div class="crew-card" data-category="desenvolvedores">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">PESQUISADOR // DEV</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <line x1="8" y1="21" x2="16" y2="21" stroke-width="2" stroke="var(--color-white)"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">David Barbosa</h3>
+              <span class="crew-role">Bolsista de Iniciação Científica & Programador</span>
+            </div>
+            <a href="https://www.linkedin.com/in/david-barbosa-29521a266/" target="_blank" class="crew-link-btn">
+              <span>CONECTAR NO LINKEDIN</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Jose Carlos -->
+        <div class="crew-card" data-category="suporte">
+          <div class="crew-card-scanline"></div>
+          <div class="crew-photo-area">
+            <span class="crew-status-badge">TÉCNICO DE LABORATÓRIO</span>
+            <svg class="crew-avatar-vector" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+              <path d="M9.7 17l1.3-1.3 1.3 1.3 1.3-1.3 1.3 1.3" stroke="var(--color-red)"/>
+            </svg>
+          </div>
+          <div class="crew-info">
+            <div class="crew-name-box">
+              <h3 class="crew-name">Jose Carlos Fonseca Filho</h3>
+              <span class="crew-role">Técnico de Laboratório</span>
+            </div>
+            <button class="crew-link-btn empty-link" disabled>
+              <span>ACESSO RESTRITO</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Rodapé HUD -->
+    <footer class="hud-footer">
+      <div class="footer-left">
+        <span>FEITO COM ⚡ PELA EQUIPE ROBOITUVA</span>
+      </div>
+      <div class="footer-right">
+        <span>FREQUÊNCIA DE PULSO DA REDE</span>
+        <div class="footer-pulse-line">
+          <span class="pulse-bar active"></span>
+          <span class="pulse-bar active"></span>
+          <span class="pulse-bar active"></span>
+          <span class="pulse-bar active"></span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Botão de controle de áudio no canto inferior direito -->
+  <div class="control-hud-bar">
+    <button class="control-btn" id="audio-toggle-btn" title="Alternar Efeitos Sonoros da UI" aria-label="Alternar Efeitos Sonoros da UI">
+      <!-- Ícone sem som -->
+      <svg id="sound-off-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <line x1="23" y1="9" x2="17" y2="15"/>
+        <line x1="17" y1="9" x2="23" y2="15"/>
+      </svg>
+      <!-- Ícone com som -->
+      <svg id="sound-on-icon" style="display: none;" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+        <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+      </svg>
+    </button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
